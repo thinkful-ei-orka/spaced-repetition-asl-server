@@ -172,17 +172,19 @@ describe('User Endpoints', function () {
           name: 'test name',
         }
         const expectedList = {
-          name: 'French',
+          name: 'ASL',
           total_score: 0,
           words: [
-            { original: 'entraine toi', translation: 'practice' },
-            { original: 'bonjour', translation: 'hello' },
-            { original: 'maison', translation: 'house' },
-            { original: 'développeur', translation: 'developer' },
-            { original: 'traduire', translation: 'translate' },
-            { original: 'incroyable', translation: 'amazing' },
-            { original: 'chien', translation: 'dog' },
-            { original: 'chat', translation: 'cat' },
+            { original: `/src/images/tinified-10signs/1.jpg`, translation: 'again' },
+            { original: '/src/images/tinified-10signs/2.jpg', translation: 'good' },
+            { original: '/src/images/tinified-10signs/3.jpg', translation: 'hello' },
+            { original: '/src/images/tinified-10signs/4.jpg', translation: 'I don\'t understand' },
+            { original: '/src/images/tinified-10signs/5.jpg', translation: 'I\'m sorry' },
+            { original: '/src/images/tinified-10signs/6.jpg', translation: 'no' },
+            { original: '/src/images/tinified-10signs/7.jpg', translation: 'please' },
+            { original: '/src/images/tinified-10signs/8.jpg', translation: 'see you later' },
+            { original: '/src/images/tinified-10signs/9.jpg', translation: 'thank you' },
+            { original: '/src/images/tinified-10signs/10.jpg', translation:  'yes' },
           ]
         }
         return supertest(app)
@@ -216,8 +218,13 @@ describe('User Endpoints', function () {
             expect(dbWords).to.have.length(
               expectedList.words.length
             )
-
+            console.log('expected List', expectedList)
             expectedList.words.forEach((expectedWord, w) => {
+              console.log('expected word', expectedWord)
+              console.log('w', w)
+              console.log('expected word original', expectedWord.original)
+              console.log('ex wo translation', expectedWord.translation)
+              console.log('dbWords original', dbWords[w].original)
               expect(dbWords[w].original).to.eql(
                 expectedWord.original
               )
