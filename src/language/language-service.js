@@ -25,6 +25,7 @@ const LanguageService = {
         'memory_value',
         'correct_count',
         'incorrect_count',
+        'description',
       )
       .where({ language_id })
   },

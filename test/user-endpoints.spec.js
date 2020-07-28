@@ -175,7 +175,7 @@ describe('User Endpoints', function () {
           name: 'ASL',
           total_score: 0,
           words: [
-            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/1.jpg`, description: 'A person with bent fingers on their dominant hand moving their hand to tab against their outstretched non-dominant hand\'s palm',translation: 'again' },
+            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/1.jpg`, description: 'A person with bent fingers on their dominant hand moving their hand to tap against their outstretched non-dominant hand\'s palm',translation: 'again' },
             { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/2.jpg`, description: 'A person with their hand against their face slowly moving their hand forward and down to stop approximately with their arm at a 45 degree angle',translation: 'good' },
             { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/3.jpg`, description: 'A person with their hand outstretched touching their forehead and moving the arm out in a salute-like gesture',translation: 'hello' },
             { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/4.jpg`, description: 'A person with their pointer finger up, eyebrows furrowed, shaking their head',translation: 'I don\'t understand' },
