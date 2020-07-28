@@ -58,16 +58,16 @@ const UserService = {
         .first()
 
       const languageWords = [
-        ['/src/images/tinified-10signs/1.jpg', 'again', 2],
-        ['/src/images/tinified-10signs/2.jpg', 'good', 3],
-        ['/src/images/tinified-10signs/3.jpg', 'hello', 4],
-        ['/src/images/tinified-10signs/4.jpg', 'I don\'t understand', 5],
-        ['/src/images/tinified-10signs/5.jpg', 'I\'m sorry', 6],
-        ['/src/images/tinified-10signs/6.jpg', 'no', 7],
-        ['/src/images/tinified-10signs/7.jpg', 'please', 8],
-        ['/src/images/tinified-10signs/8.jpg', 'see you later', 9],
-        ['/src/images/tinified-10signs/9.jpg', 'thank you', 10],
-        ['/src/images/tinified-10signs/10.jpg', 'yes', null],
+        ['https://thinkful-ei-orka.github.io/sp-asl-pics/1.jpg', 'again', 2],
+        ['https://thinkful-ei-orka.github.io/sp-asl-pics/2.jpg', 'good', 3],
+        ['https://thinkful-ei-orka.github.io/sp-asl-pics/3.jpg', 'hello', 4],
+        ['https://thinkful-ei-orka.github.io/sp-asl-pics/4.jpg', 'I don\'t understand', 5],
+        ['https://thinkful-ei-orka.github.io/sp-asl-pics/5.jpg', 'I\'m sorry', 6],
+        ['https://thinkful-ei-orka.github.io/sp-asl-pics/6.jpg', 'no', 7],
+        ['https://thinkful-ei-orka.github.io/sp-asl-pics/7.jpg', 'please', 8],
+        ['https://thinkful-ei-orka.github.io/sp-asl-pics/8.jpg', 'see you later', 9],
+        ['https://thinkful-ei-orka.github.io/sp-asl-pics/9.jpg', 'thank you', 10],
+        ['https://thinkful-ei-orka.github.io/sp-asl-pics/10.jpg', 'yes', null],
       ]
 
       const [languageHeadId] = await trx

@@ -175,16 +175,16 @@ describe('User Endpoints', function () {
           name: 'ASL',
           total_score: 0,
           words: [
-            { original: `/src/images/tinified-10signs/1.jpg`, translation: 'again' },
-            { original: '/src/images/tinified-10signs/2.jpg', translation: 'good' },
-            { original: '/src/images/tinified-10signs/3.jpg', translation: 'hello' },
-            { original: '/src/images/tinified-10signs/4.jpg', translation: 'I don\'t understand' },
-            { original: '/src/images/tinified-10signs/5.jpg', translation: 'I\'m sorry' },
-            { original: '/src/images/tinified-10signs/6.jpg', translation: 'no' },
-            { original: '/src/images/tinified-10signs/7.jpg', translation: 'please' },
-            { original: '/src/images/tinified-10signs/8.jpg', translation: 'see you later' },
-            { original: '/src/images/tinified-10signs/9.jpg', translation: 'thank you' },
-            { original: '/src/images/tinified-10signs/10.jpg', translation:  'yes' },
+            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/1.jpg`, translation: 'again' },
+            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/2.jpg`, translation: 'good' },
+            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/3.jpg`, translation: 'hello' },
+            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/4.jpg`, translation: 'I don\'t understand' },
+            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/5.jpg`, translation: 'I\'m sorry' },
+            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/6.jpg`, translation: 'no' },
+            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/7.jpg`, translation: 'please' },
+            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/8.jpg`, translation: 'see you later' },
+            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/9.jpg`, translation: 'thank you' },
+            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/10.jpg`, translation:  'yes' },
           ]
         }
         return supertest(app)
