@@ -175,16 +175,16 @@ describe('User Endpoints', function () {
           name: 'ASL',
           total_score: 0,
           words: [
-            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/1.jpg`, translation: 'again' },
-            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/2.jpg`, translation: 'good' },
-            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/3.jpg`, translation: 'hello' },
-            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/4.jpg`, translation: 'I don\'t understand' },
-            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/5.jpg`, translation: 'I\'m sorry' },
-            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/6.jpg`, translation: 'no' },
-            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/7.jpg`, translation: 'please' },
-            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/8.jpg`, translation: 'see you later' },
-            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/9.jpg`, translation: 'thank you' },
-            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/10.jpg`, translation:  'yes' },
+            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/1.jpg`, description: 'A person with bent fingers on their dominant hand moving their hand to tab against their outstretched non-dominant hand\'s palm',translation: 'again' },
+            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/2.jpg`, description: 'A person with their hand against their face slowly moving their hand forward and down to stop approximately with their arm at a 45 degree angle',translation: 'good' },
+            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/3.jpg`, description: 'A person with their hand outstretched touching their forehead and moving the arm out in a salute-like gesture',translation: 'hello' },
+            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/4.jpg`, description: 'A person with their pointer finger up, eyebrows furrowed, shaking their head',translation: 'I don\'t understand' },
+            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/5.jpg`, description: ' A person with their hand in a fist moving it in a circular motion, eyebrows furrowed',translation: 'I\'m sorry' },
+            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/6.jpg`, description: 'A person with their pointer and index fingers tapping against their thumb',translation: 'no' },
+            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/7.jpg`, description: 'A person with a flat palm against their chest, moving in a circular motion',translation: 'please' },
+            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/8.jpg`, description: 'A person with their pointer and index fingers pointed at their eyes, moving their hand down and away from their body, then them pointing to another, then extending their thumb and pointer finger and moving their hand down and away from themselves',translation: 'see you later' },
+            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/9.jpg`, description: 'A person with the fingertips of their middle fingers touching their chin, then tier hand down and away from their face',translation: 'thank you' },
+            { original: `https://thinkful-ei-orka.github.io/sp-asl-pics/10.jpg`, description: 'A person moving their fist up and down',translation:  'yes' },
           ]
         }
         return supertest(app)
