@@ -55,6 +55,7 @@ languageRouter
         wordIncorrectCount: gNW.incorrect_count,
         totalScore: gNW.total_score,
         wordDescription: gNW.description
+        head
       })
       next()
     }
