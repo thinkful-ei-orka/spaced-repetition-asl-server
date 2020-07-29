@@ -53,7 +53,8 @@ languageRouter
         nextWord: gNW.original,
         wordCorrectCount: gNW.correct_count,
         wordIncorrectCount: gNW.incorrect_count,
-        totalScore: gNW.total_score
+        totalScore: gNW.total_score,
+        wordDescription: gNW.description
       })
       next()
     }

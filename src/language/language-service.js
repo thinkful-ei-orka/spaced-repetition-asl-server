@@ -40,7 +40,8 @@ const LanguageService = {
         'language.total_score',
         'word.correct_count',
         'word.incorrect_count',
-        'word.original'
+        'word.original',
+        'word.description'
       )
       .leftJoin(
         'word',
