@@ -1,7 +1,7 @@
 const app = require('../src/app')
 const helpers = require('./test-helpers')
 
-describe('Language Endpoints', function () {
+describe.only('Language Endpoints', function () {
   let db
 
   const testUsers = helpers.makeUsersArray()
@@ -98,6 +98,7 @@ describe('Language Endpoints', function () {
             const word = res.body.words[idx]
             expect(word).to.have.property('id', usersWord.id)
             expect(word).to.have.property('original', usersWord.original)
+            expect(word).to.have.property('description', usersWord.description)
             expect(word).to.have.property('translation', usersWord.translation)
             expect(word).to.have.property('memory_value', 1)
             expect(word).to.have.property('correct_count', 0)
@@ -123,7 +124,7 @@ describe('Language Endpoints', function () {
       )
     })
 
-    it.skip(`responds with 200 and user's languages`, () => {
+    it(`responds with 200 and user's languages`, () => {
       return supertest(app)
         .get(`/api/language/head`)
         .set('Authorization', helpers.makeAuthHeader(testUser))

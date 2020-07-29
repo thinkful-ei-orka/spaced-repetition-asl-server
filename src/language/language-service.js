@@ -29,6 +29,27 @@ const LanguageService = {
       )
       .where({ language_id })
   },
+
+  getNextWord(db, id) {
+    console.log('id in gnw', id)
+    return db
+      .from('language')
+      .select(
+        'language.id',
+        'language.head',
+        'language.total_score',
+        'word.correct_count',
+        'word.incorrect_count',
+        'word.original'
+      )
+      .leftJoin(
+        'word',
+        'language.head',
+        'word.id'
+      )
+      .where('word.id', id)
+      .first()
+  }
 }
 
 module.exports = LanguageService

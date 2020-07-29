@@ -45,8 +45,21 @@ languageRouter
 
 languageRouter
   .get('/head', async (req, res, next) => {
-    // implement me
-    res.send('implement me!')
+    console.log('req head', req.language.head)
+    try {
+      let gNW = await LanguageService.getNextWord(req.app.get('db'),req.language.head)
+      // console.log('gNw', gNW)
+      res.json({
+        nextWord: gNW.original,
+        wordCorrectCount: gNW.correct_count,
+        wordIncorrectCount: gNW.incorrect_count,
+        totalScore: gNW.total_score
+      })
+      next()
+    }
+    catch (error) {
+      console.log(error)
+    }
   })
 
 languageRouter

@@ -26,7 +26,7 @@ VALUES
   (3, 1, 'https://thinkful-ei-orka.github.io/sp-asl-pics/3.jpg', 'A person with their hand outstretched touching their forehead and moving the arm out in a salute-like gesture','hello', 4),
   (4, 1, 'https://thinkful-ei-orka.github.io/sp-asl-pics/4.jpg', 'A person with their pointer finger up, eyebrows furrowed, shaking their head','I don''t understand', 5),
   (5, 1, 'https://thinkful-ei-orka.github.io/sp-asl-pics/5.jpg', 'A person with their hand in a fist moving it in a circular motion, eyebrows furrowed','I''m sorry', 6),
-  (6, 1, 'https://thinkful-ei-orka.github.io/sp-asl-pics/6.jpg', ' A person with their pointer and index fingers tapping against their thumb','no', 7),
+  (6, 1, 'https://thinkful-ei-orka.github.io/sp-asl-pics/6.jpg', 'A person with their pointer and index fingers tapping against their thumb','no', 7),
   (7, 1, 'https://thinkful-ei-orka.github.io/sp-asl-pics/7.jpg', 'A person with a flat palm against their chest, moving in a circular motion','please', 8),
   (8, 1, 'https://thinkful-ei-orka.github.io/sp-asl-pics/8.jpg', 'A person with their pointer and index fingers pointed at their eyes, moving their hand down and away from their body, then them pointing to another, then extending their thumb and pointer finger and moving their hand down and away from themselves','see you later', 9),
   (9, 1, 'https://thinkful-ei-orka.github.io/sp-asl-pics/9.jpg', 'A person with the fingertips of their middle fingers touching their chin, then tier hand down and away from their face','thank you', 10),
