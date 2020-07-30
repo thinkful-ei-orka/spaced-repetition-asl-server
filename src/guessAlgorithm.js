@@ -131,3 +131,44 @@ function learnWorder(list, numOfGuesses) {
 // display(wordList)
 
 LanguageService.getLinkedList()
+wordGuesser = (list, guess) => {
+        console.log('guess', guess)
+        console.log('type of', typeof guess)
+        let isCorrect = true
+        let tempNode = list.head
+        if(tempNode.value.translation.toLowerCase() === guess.toLowerCase()) {
+            isCorrect = true
+            tempNode.value.correct_count = tempNode.value.correct_count + 1
+            tempNode.value.memory_value = parseInt(tempNode.value.memory_value) * 2
+            console.log('should be true', isCorrect)
+        } else {
+            isCorrect = false;
+            tempNode.value.incorrect_count = tempNode.value.incorrect_count + 1
+            tempNode.value.memory_value = 1
+            console.log('should be false', isCorrect)
+        }
+     
+        list.head = list.head.next
+        if (parseInt(tempNode.value.memory_value) > list.size) {
+            list.insertLast(tempNode.value)
+        }
+        else if (tempNode.value.memory_value > 1){
+            list.insertAt(tempNode.value, parseInt(tempNode.value.memory_value))
+        }
+        else {
+            list.insertAt(tempNode.value, 2)
+        }
+
+        console.log('first word now:', list.head)
+
+        let previous = list.findPrevious(list, tempNode.value)
+
+        let returnNode = {
+            isCorrect: this.isCorrect,
+            word: { ...tempNode.value },
+            previousId: previous.id,
+            list: list
+        }
+}
+
+// export default wordGuesser 
