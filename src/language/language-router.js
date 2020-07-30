@@ -45,7 +45,6 @@ languageRouter
 
 languageRouter
   .get('/head', async (req, res, next) => {
-    console.log('req head', req.language.head)
     try {
       let gNW = await LanguageService.getNextWord(req.app.get('db'),req.language.head)
       // console.log('gNw', gNW)
@@ -67,6 +66,32 @@ languageRouter
   .post('/guess', async (req, res, next) => {
     // implement me
     res.send('implement me!')
+  })
+
+
+languageRouter
+  .get('/test',async (req, res, next) => {
+    const { guess } = req.body
+
+    for(const field of [guess])
+      if(!req.body[field])
+        return res.status(400).json({
+          error: `Missing`
+        })
+    try {
+      const wordsList = await LanguageService.getLinkedList(
+        req.app.get('db'),
+        req.language.id,
+      )
+      console.log('wordsList', wordsList)
+
+      res.json({
+        wordsList
+      })
+      next()
+    } catch (error) {
+      next(error)
+    }
   })
 
 module.exports = languageRouter

@@ -1,3 +1,5 @@
+const LinkedList = require('../linked-list')
+
 const LanguageService = {
   getUsersLanguage(db, user_id) {
     return db
@@ -28,6 +30,7 @@ const LanguageService = {
         'description',
       )
       .where({ language_id })
+      .orderBy('memory_value')
   },
 
   getNextWord(db, id) {
@@ -50,7 +53,20 @@ const LanguageService = {
       )
       .where('word.id', id)
       .first()
-  }
+  },
+
+  async getLinkedList(db, language_id) {
+    try {
+      let words = await this.getLanguageWords(db, language_id)
+      let wordList = new LinkedList
+      words.forEach(word => {
+        wordList.insertLast(word)
+      })
+      return wordList
+    } catch(error) {
+      console.log(error)
+    }
+  },
 }
 
 module.exports = LanguageService
