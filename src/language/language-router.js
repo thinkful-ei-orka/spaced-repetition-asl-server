@@ -65,9 +65,56 @@ languageRouter
   })
 
 languageRouter
-  .post('/guess', async (req, res, next) => {
-    // implement me
-    res.send('implement me!')
+  .post('/guess', jsonBodyParser, async (req, res, next) => {
+    const { guess } = req.body
+
+    for(const field of ['guess'])
+      if(!req.body[field])
+        return res.status(400).json({
+          error: `Missing '${field}' in request body`
+        })
+
+    try {
+      const wordsList = await LanguageService.getLinkedList(
+        req.app.get('db'),
+        req.language.id,
+        req.language.head
+      )
+
+      const { isCorrect, previousId, list, word, head } = await LanguageService.wordGuesser(wordsList, guess)
+  
+      await LanguageService.updateWordNext(req.app.get('db'), previousId, word.value.id)
+      await LanguageService.updateWord(req.app.get('db'), word.value.id, word.value)
+      
+      let new_total_score = 0;
+      
+      if (isCorrect) {
+        await LanguageService.updateLanugage(req.app.get('db'), req.language.id, req.language.total_score + 1, head)
+        new_total_score = req.language.total_score + 1
+      } 
+      
+      else {
+        await LanguageService.updateLanugage(req.app.get('db'), req.language.id, req.language.total_score, head)
+        new_total_score = req.language.total_score
+      }
+    
+      res
+        .status(200)
+        .json({
+          nextWord: word.next.value.original,
+          wordCorrectCount: word.value.correct_count,
+          wordIncorrectCount: word.value.incorrect_count,
+          totalScore: new_total_score,
+          answer: word.value.translation,
+          isCorrect: isCorrect
+        })
+      
+        next()
+    }
+    
+    catch (error) {
+      next(error)
+    }
   })
 
 
