@@ -1,5 +1,4 @@
 const LinkedList = require('../linked-list')
-// const wordGuesser = require('../guessAlgorithm')
 const languageRouter = require('./language-router')
 
 const LanguageService = {
@@ -36,7 +35,6 @@ const LanguageService = {
   },
 
   getNextWord(db, id) {
-    // console.log('id in gnw', id)
     return db
       .from('language')
       .select(
@@ -58,7 +56,6 @@ const LanguageService = {
   },
 
   updateLanugage(db, language_id, total_score, headId) {
-    console.log('headID', headId)
     return db
       .from('language')
       .update({
@@ -81,8 +78,6 @@ const LanguageService = {
   },
 
   updateWordNext(db, word_id, nextId) {
-    // console.log('nextId', nextId)
-    // console.log('wordId', word_id)
     return db
       .from('word')
       .update({
@@ -94,14 +89,12 @@ const LanguageService = {
   async getLinkedList(db, language_id, headId) {
     try {
       let words = await this.getLanguageWords(db, language_id)
-      // console.log('words in gLL', words)
       let wordList = new LinkedList
       //array, so we find and take out the head obj to start LL
       let headObj = words.find(word => word.id === headId)
       let headInd = words.indexOf(headObj)
-      let head = words.slice(headInd, 1)
+      let head = words.splice(headInd, 1)
 
-      // console.log('head', head)
       wordList.insertFirst(head[0])
       //set nextId to the next value of the head
       let nextId = head[0].next
@@ -111,111 +104,61 @@ const LanguageService = {
 
       //reset nextId to the currWord's next value
       nextId = currWord.next
-      // currWord = words.find(word => word.id === nextId)
 
       /** 
        * as long as currWord exists, go through each next value
        * until it is null, inserting as we go
       */
       while(currWord !== null) {
-        // console.log('continues')
-        //update currWord and rest nextId
+        //update currWord and reset nextId
         currWord = words.find(word => word.id === nextId)
-        // console.log('currWord now:', currWord)
         wordList.makeEnd(currWord)
-        // console.log(`added to linkedList`)
         nextId = currWord.next
-        // console.log('nextId is:', nextId)
+
         if(nextId === null) {
-          // console.log('while nextId =/= null')
           //if no next, then set currWord to null to escape loop
           currWord = null
         } 
-        // console.log('next loop')
       }
-      // console.log('wordList is:', wordList)
       return wordList
     } catch(error) {
     console.log(error)
-  }
-
-      // words.forEach(word => {
-
-      //   if(word.id === headId) {
-      //     wordList.insertFirst(word)
-      //   }
-
-      //   else if (wordList.find(word.next)) {
-      //     wordList.insertBefore(word, word.next)
-      //   }
-
-      //   else if(word.next === null) {
-      //     wordList.makeEnd(word)
-      //   }
-        
-      //   else if (!wordList.head) {
-      //     wordList.insertFirst(word)
-      //   }
-        // else {
-        //   wordList.insertAfter(word, wordList.head.value.id)
-        // }
-    //   })
-    //   console.log('wordList is:',wordList)
-    //   return wordList
-    // } catch(error) {
-    //   console.log(error)
-    // }
-
-    // if(word.id === headId) {
-    //   wordList.insertBefore
-    // }
-    // next values
-
-    // for (let i = 1; i <= )
-    
-    // need to set head
+    }
   },
 
   wordGuesser(list, guess) {
-
+    //set up vars
     let isCorrect = true
     let tempNode = list.head
-    // console.log('initial list head', tempNode)
+
+    //check is correct or not
     if(tempNode.value.translation.toLowerCase() === guess.toLowerCase()) {
-        isCorrect = true
-        tempNode.value.correct_count = tempNode.value.correct_count + 1
-        tempNode.value.memory_value = parseInt(tempNode.value.memory_value) * 2
-        // console.log('guess correct?', isCorrect)
+      isCorrect = true
+      tempNode.value.correct_count = tempNode.value.correct_count + 1
+      tempNode.value.memory_value = parseInt(tempNode.value.memory_value) * 2
     } else {
-        isCorrect = false;
-        tempNode.value.incorrect_count = tempNode.value.incorrect_count + 1
-        tempNode.value.memory_value = 1
-        // console.log('guess correct?', isCorrect)
+      isCorrect = false
+      tempNode.value.incorrect_count = tempNode.value.incorrect_count + 1
+      tempNode.value.memory_value = 1
     }
- 
+    //set the head to head's next val
     list.head = list.head.next
-    // console.log('new list.head', list.head)
+
+    //check memory_value to decide where to place guessed question
     if (parseInt(tempNode.value.memory_value) > list.size) {
-        // console.log(tempNode.value.memory_value, 'is greater than', list.size)
-        // console.log('inserting to last of list:', tempNode.value)
         list.insertLast(tempNode.value)
     }
     else if (tempNode.value.memory_value > 1){
-        // console.log('else if of tempnode mem_val greater than 1', tempNode.value.memory_value)
         list.insertAt(tempNode.value, parseInt(tempNode.value.memory_value))
     }
     else {
-        // console.log('else set to second place: mem_val', tempNode.value.memory_value)
         list.insertAt(tempNode.value, 2)
     }
-
-    // console.log('first word now:', list.head)
     
+    //get the previous ID for route useage
     let previous = list.findPrevious(tempNode.value.id)
-    // console.log('previous in WordGuesser', previous)
-    // console.log('LIST AFTER COMPLETE GUESS')
-    // this.display(list)
 
+    //set a return variable
     let returnValues = {
         isCorrect: isCorrect,
         word: { ...tempNode },
@@ -224,16 +167,7 @@ const LanguageService = {
         head: list.head.value.id
     }
     return returnValues
-},
-
-
-display(list) {
-  let currentNode = list.head;
-  while (currentNode !== null) {
-      console.log(currentNode);
-      currentNode = currentNode.next
-  }
-}
+  },
 
 }
 
