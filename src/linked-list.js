@@ -40,7 +40,7 @@ class LinkedList {
             while (tempNode.next !== null) {
                 tempNode = tempNode.next;
             }
-            let newNode = new _Node(item, null)
+            tempNode.next = new _Node(item, null)
         }
     }
 
@@ -97,6 +97,7 @@ class LinkedList {
     //     }
     // }
     insertAt(item, index) {
+        console.log('item in insertAt', item)
         let currentNode = this.head;
         let previousNode = null;
 
@@ -109,10 +110,16 @@ class LinkedList {
             previousNode = currentNode;
             currentNode = currentNode.next;
         }
-
-        previousNode.next = new _Node(item, currentNode);
-        previousNode.value.next = currentNode.id
-        currentNode.value.next = currentNode.next.value.id
+        let newNode = new _Node(item, currentNode)
+        // console.log('currNode in insertAt', currentNode)
+        // console.log('previousNode', previousNode)
+        // previousNode.next = new _Node(item, currentNode);
+        previousNode.next = newNode
+        // console.log('prevNode after insert', previousNode)
+        previousNode.value.next = newNode.value.id
+        // console.log('previous node after setting next.value.next', previousNode)
+        newNode.value.next = currentNode.value.id
+        // console.log('newNode after setting value.next', newNode)
         
     }
 

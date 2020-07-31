@@ -49,6 +49,7 @@ languageRouter
     try {
       let gNW = await LanguageService.getNextWord(req.app.get('db'), req.language.head)
       // console.log('gNw', gNW)
+
       res.json({
         nextWord: gNW.original,
         wordCorrectCount: gNW.correct_count,
@@ -73,7 +74,7 @@ languageRouter
 languageRouter
   .post('/test', jsonBodyParser, async (req, res, next) => {
     const { guess } = req.body
-    console.log('gues', guess)
+    console.log('guess', guess)
 
     for(const field of ['guess'])
       if(!req.body[field])
@@ -87,7 +88,6 @@ languageRouter
         req.language.id,
         req.language.head
       )
-      // console.log('wordsList', wordsList)
 
       const { isCorrect, previousId, list, word, head } = await LanguageService.wordGuesser(wordsList, guess)
       console.log('head in post req', head)
@@ -99,15 +99,15 @@ languageRouter
       let new_total_score = 0;
       if (isCorrect) {
         await LanguageService.updateLanugage(req.app.get('db'), req.language.id, req.language.total_score + 1, head)
-        console.log('totaatlscore', req.language.total_score + 1)
+        console.log('total score', req.language.total_score + 1)
         new_total_score = req.language.total_score + 1
-        console.log('new totoal csore', new_total_score)
+        console.log('new total score', new_total_score)
 
       } else {
         await LanguageService.updateLanugage(req.app.get('db'), req.language.id, req.language.total_score, head)
-        console.log('totaatlscore', req.language.total_score)
+        console.log('total score', req.language.total_score)
         new_total_score = req.language.total_score
-        console.log('new totoal csore', new_total_score)
+        console.log('new total score', new_total_score)
       }
     
       res
