@@ -96,7 +96,7 @@ const LanguageService = {
       let words = await this.getLanguageWords(db, language_id)
       // console.log('words in gLL', words)
       let wordList = new LinkedList
-      //array, so we take out the head obj and start LL
+      //array, so we find and take out the head obj to start LL
       let headObj = words.find(word => word.id === headId)
       let headInd = words.indexOf(headObj)
       let head = words.slice(headInd, 1)
@@ -180,32 +180,32 @@ const LanguageService = {
 
     let isCorrect = true
     let tempNode = list.head
-    console.log('initial list head', tempNode)
+    // console.log('initial list head', tempNode)
     if(tempNode.value.translation.toLowerCase() === guess.toLowerCase()) {
         isCorrect = true
         tempNode.value.correct_count = tempNode.value.correct_count + 1
         tempNode.value.memory_value = parseInt(tempNode.value.memory_value) * 2
-        console.log('guess correct?', isCorrect)
+        // console.log('guess correct?', isCorrect)
     } else {
         isCorrect = false;
         tempNode.value.incorrect_count = tempNode.value.incorrect_count + 1
         tempNode.value.memory_value = 1
-        console.log('guess correct?', isCorrect)
+        // console.log('guess correct?', isCorrect)
     }
  
     list.head = list.head.next
-    console.log('new list.head', list.head)
+    // console.log('new list.head', list.head)
     if (parseInt(tempNode.value.memory_value) > list.size) {
-        console.log(tempNode.value.memory_value, 'is greater than', list.size)
-        console.log('inserting to last of list:', tempNode.value)
+        // console.log(tempNode.value.memory_value, 'is greater than', list.size)
+        // console.log('inserting to last of list:', tempNode.value)
         list.insertLast(tempNode.value)
     }
     else if (tempNode.value.memory_value > 1){
-        console.log('else if of tempnode mem_val greater than 1', tempNode.value.memory_value)
+        // console.log('else if of tempnode mem_val greater than 1', tempNode.value.memory_value)
         list.insertAt(tempNode.value, parseInt(tempNode.value.memory_value))
     }
     else {
-        console.log('else set to second place: mem_val', tempNode.value.memory_value)
+        // console.log('else set to second place: mem_val', tempNode.value.memory_value)
         list.insertAt(tempNode.value, 2)
     }
 
@@ -213,8 +213,8 @@ const LanguageService = {
     
     let previous = list.findPrevious(tempNode.value.id)
     // console.log('previous in WordGuesser', previous)
-    console.log('LIST AFTER COMPLETE GUESS')
-    this.display(list)
+    // console.log('LIST AFTER COMPLETE GUESS')
+    // this.display(list)
 
     let returnValues = {
         isCorrect: isCorrect,
