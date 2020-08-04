@@ -13,19 +13,19 @@
     "deploy": "git push heroku master"
   },
   "keywords": [],
-  "engines": {
+  "engines":{
     "node": "13.12.0"
   },
-  "author": "Tom `tomatao` HT <tomht@thinkful.com>",
+  "author": "Sherry McCarty and Mandela Jones",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
-    "helmet": "^3.23.3",
+    "helmet": "^3.15.0",
     "jsonwebtoken": "^8.5.0",
-    "knex": "^0.21.2",
+    "knex": "^0.16.3",
     "morgan": "^1.9.1",
     "pg": "^8.3.0",
     "pg-native": "^3.0.0"
